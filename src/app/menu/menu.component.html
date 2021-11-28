@@ -1,12 +1,20 @@
 <div id="row">
   <label for="checkboxMenu" id="searchPlaces">Search for places</label>
   <div id="gps">
-      <img class="icon_white" src="assets/gps_fixed_black_24dp.svg" alt="exit">
+    <img class="icon_white" src="assets/gps_fixed_black_24dp.svg" alt="exit">
   </div>
 </div>
 
 <input type="checkbox" id="checkboxMenu">
 <div id="menu">
   <label for="checkboxMenu" id="exitMenu"><img class="icon_white" src="assets/close_black_24dp.svg" alt="exit"></label>
-
+  <form>
+    <input type="text" placeholder="Search location">
+    <input type="submit" value="Search">
+    <img class="icon_gray" src="assets/search_black_24dp.svg" alt="Search">
+  </form>
+  <div class="location" *ngFor="let item of location">
+    <p>{{item}}</p>
+    <img class="icon_gray" src="assets/chevron_right_black_24dp.svg" alt="Search">
+  </div>
 </div>
