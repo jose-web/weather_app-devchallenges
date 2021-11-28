@@ -10,7 +10,48 @@
     <p>Today · Fri 5 Jun</p>
     <p> <img class="icon_gray" src="assets/place_black_24dp.svg" alt="Location"> Helsinki</p>
   </div>
-  <div id="secondary">2</div>
+  <div id="secondary">
+    <div id="temperatureFormat">
+      <input type="radio" name="temperature" checked value="C" id="C">
+      <label for="C">ºC</label>
+      <input type="radio" name="temperature" value="F" id="F">
+      <label for="F">ºF</label>
+    </div>
+    <div id="week">
+      <div *ngFor="let item of week">
+        <p>Tomorrow</p>
+        <img src="assets/Clear.png" alt="">
+        <p class="temperature">16ºC <span>11ºC</span></p>
+      </div>
+    </div>
+    <p id="hightlightsTitle">Today's Hightlights</p>
+    <div id="hightlights">
+      <div>
+        <p>Wind status</p>
+        <p class="big">7mph</p>
+        <div>
+          <img class="icon_white" src="assets/near_me_black_24dp.svg" alt="Navigation">
+          <p>WSW</p>
+        </div>
+      </div>
+      <div>
+        <p>Humidity</p>
+        <p class="big">84%</p>
+        <div>
+          <p>0</p><p id="p50">50</p><p>100</p>
+          <div id="percentage"><div style="width:84%"></div></div>
+        </div>
+      </div>
+      <div>
+        <p>Visibility</p>
+        <p class="big">6,4 miles</p>
+      </div>
+      <div>
+        <p>Air Pressure</p>
+        <p class="big">998 mb</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <router-outlet></router-outlet>

@@ -6,5 +6,36 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'WeatherApp';
+  week:any = [
+    {
+      name: "Tomorrow",
+      img: "clear.png",
+      max: 16,
+      min: 11
+    },
+    {
+      name: "Tomorrow",
+      img: "clear.png",
+      max: 16,
+      min: 11
+    },  
+    {
+      name: "Tomorrow",
+      img: "clear.png",
+      max: 16,
+      min: 11
+    },  
+    {
+      name: "Tomorrow",
+      img: "clear.png",
+      max: 16,
+      min: 11
+    },  
+    {
+      name: "Tomorrow",
+      img: "clear.png",
+      max: 16,
+      min: 11
+    },
+  ]
 }
