@@ -1,14 +1,18 @@
 <div id="AllContent">
   <div id="principal">
-    <Menu></Menu>
+    <Menu (locationMenu)="setLocation($event)"></Menu>
     <div id="weatherToday">
       <img id="background" src="assets/Cloud-background.png" alt="background">
-      <img id="imageToday" src="assets/Shower.png" alt="">
+      <img id="imageToday" [src]="getImage(week[0]?.weather_state_name)" alt="">
     </div>
-    <p id="temperature">10<span>ºC</span></p>
-    <p id="textWeather">Shower</p>
-    <p>Today · Fri 5 Jun</p>
-    <p> <img class="icon_gray" src="assets/place_black_24dp.svg" alt="Location"> Helsinki</p>
+    <div>
+      <p id="temperature">{{week[0]?.the_temp.toFixed(2)}}<span>ºC</span></p>
+      <p id="textWeather">{{week[0]?.weather_state_name}}</p>
+    </div>
+    <div>
+      <p>Today · {{week[0]?.applicable_date}}</p>
+      <p> <img class="icon_gray" src="assets/place_black_24dp.svg" alt="Location"> {{location}}</p>
+    </div>
   </div>
   <div id="secondary">
     <div id="temperatureFormat">
@@ -18,37 +22,42 @@
       <label for="F">ºF</label>
     </div>
     <div id="week">
-      <div *ngFor="let item of week">
-        <p>Tomorrow</p>
-        <img src="assets/Clear.png" alt="">
-        <p class="temperature">16ºC <span>11ºC</span></p>
+      <div *ngFor="let item of week.slice(1); let i = index">
+        <p>{{i==0?"Tomorrow":item.applicable_date}}</p>
+
+        <img [src]="getImage(item.weather_state_name)" [alt]="item.weather_state_name">
+        <p class="temperature">{{item.max_temp.toFixed(0)}}ºC <span>{{item.min_temp.toFixed(0)}}ºC</span></p>
       </div>
     </div>
     <p id="hightlightsTitle">Today's Hightlights</p>
     <div id="hightlights">
       <div>
         <p>Wind status</p>
-        <p class="big">7mph</p>
+        <p class="big">{{week[0]?.wind_speed.toFixed(2)}} mph</p>
         <div>
           <img class="icon_white" src="assets/near_me_black_24dp.svg" alt="Navigation">
-          <p>WSW</p>
+          <p>{{week[0]?.wind_direction_compass}}</p>
         </div>
       </div>
       <div>
         <p>Humidity</p>
-        <p class="big">84%</p>
+        <p class="big">{{week[0]?.humidity}}%</p>
         <div>
-          <p>0</p><p id="p50">50</p><p>100</p>
-          <div id="percentage"><div style="width:84%"></div></div>
+          <p>0</p>
+          <p id="p50">50</p>
+          <p>100</p>
+          <div id="percentage">
+            <div [style]="{width: week[0]?.humidity+'%'}"></div>
+          </div>
         </div>
       </div>
       <div>
         <p>Visibility</p>
-        <p class="big">6,4 miles</p>
+        <p class="big">{{week[0]?.visibility.toFixed(2)}} miles</p>
       </div>
       <div>
         <p>Air Pressure</p>
-        <p class="big">998 mb</p>
+        <p class="big">{{week[0]?.air_pressure.toFixed(2)}} mb</p>
       </div>
     </div>
   </div>

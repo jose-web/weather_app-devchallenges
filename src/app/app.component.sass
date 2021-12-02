@@ -5,12 +5,15 @@
 
     #principal
         background-color: #1e213a
-        min-height: 100vh
+        height: 100vh
         display: flex
         flex-direction: column
         padding: 2em
         overflow: hidden
         justify-content: space-between
+        position: sticky
+        top: 0
+        left: 0
 
         #weatherToday
             display: flex
@@ -89,15 +92,20 @@
                 text-align: center
                 margin-left: 1em
                 margin-top: 1em
+                display: flex
+                flex-direction: column
+                justify-content: space-between
+                align-items: center
 
                 img
                     width: 60%
+                    margin: 1em
 
                 .temperature
-                    flex: 100%
                     display: flex
                     justify-content: space-between
-                    margin-top: 1em
+                    padding-top: 1em
+                    width: 100%
 
                     span
                         color: #585676

@@ -13,7 +13,7 @@
     <input type="submit" value="Search">
     <img class="icon_gray" src="assets/search_black_24dp.svg" alt="Search">
   </form>
-  <div class="location" *ngFor="let item of location">
+  <div class="location" *ngFor="let item of location" (click)="sendLocation(item.woeid)">
     <p>{{item.title}}</p>
     <img class="icon_gray" src="assets/chevron_right_black_24dp.svg" alt="Search">
   </div>
