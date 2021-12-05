@@ -14,6 +14,7 @@
         position: sticky
         top: 0
         left: 0
+        z-index: 10
 
         #weatherToday
             display: flex
@@ -51,10 +52,16 @@
         #textWeather
             font-size: 2em
             margin-bottom: 2em
+            margin-top: 1em
+        
+        #todayDate
+            margin-bottom: 1em
 
     #secondary
         flex: 1
         padding: 2em 7em
+        max-width: 70em
+        margin: auto
 
         #temperatureFormat
             display: flex
@@ -80,22 +87,22 @@
             display: flex
             flex-direction: row
             margin-top: 1em
-            justify-content: space-between
             flex-wrap: wrap
-            margin-left: -1em
+            justify-content: flex-start
 
             div
-                flex: 0 18%
+                min-width: 8em
+                flex: 0 calc( 100% / 5 - 2em )
                 background-color: #1e213a
                 color: white
                 padding: 1em
                 text-align: center
-                margin-left: 1em
-                margin-top: 1em
+                margin: 1em
                 display: flex
                 flex-direction: column
                 justify-content: space-between
                 align-items: center
+                white-space: nowrap
 
                 img
                     width: 60%
