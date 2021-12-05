@@ -3,7 +3,7 @@
     <Menu (locationMenu)="setLocation($event)"></Menu>
     <div id="weatherToday">
       <img id="background" src="assets/Cloud-background.png" alt="background">
-      <img id="imageToday" [src]="getImage(week[0]?.weather_state_name)" alt="">
+      <img id="imageToday" *ngIf="week[0] != undefined" [src]="getImage(week[0]?.weather_state_name)" alt="Image weather today">
     </div>
     <div>
       <p id="temperature">{{week[0]?.the_temp.toFixed(2)}}<span>ºC</span></p>
