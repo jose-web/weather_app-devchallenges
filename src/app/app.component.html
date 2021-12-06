@@ -6,7 +6,7 @@
       <img id="imageToday" *ngIf="week[0] != undefined" [src]="getImage(week[0]?.weather_state_name)" alt="Image weather today">
     </div>
     <div>
-      <p id="temperature">{{week[0]?.the_temp.toFixed(2)}}<span>ºC</span></p>
+      <p id="temperature">{{week[0]?.the_temp.toFixed(2)}}<span>º{{type}}</span></p>
       <p id="textWeather">{{week[0]?.weather_state_name}}</p>
     </div>
     <div>
@@ -16,9 +16,9 @@
   </div>
   <div id="secondary">
     <div id="temperatureFormat">
-      <input type="radio" name="temperature" checked value="C" id="C">
+      <input type="radio" name="temperature" checked value="C" id="C" (change)="changeType('C')">
       <label for="C">ºC</label>
-      <input type="radio" name="temperature" value="F" id="F">
+      <input type="radio" name="temperature" value="F" id="F" (change)="changeType('F')">
       <label for="F">ºF</label>
     </div>
     <div id="week">
@@ -26,7 +26,7 @@
         <p>{{i==0?"Tomorrow":item.applicable_date}}</p>
 
         <img [src]="getImage(item.weather_state_name)" [alt]="item.weather_state_name">
-        <p class="temperature">{{item.max_temp.toFixed(0)}}ºC <span>{{item.min_temp.toFixed(0)}}ºC</span></p>
+        <p class="temperature">{{item.max_temp.toFixed(0)}}º{{type}} <span>{{item.min_temp.toFixed(0)}}º{{type}}</span></p>
       </div>
     </div>
     <p id="hightlightsTitle">Today's Hightlights</p>
