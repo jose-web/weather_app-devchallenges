@@ -26,12 +26,15 @@ export class Menu {
   onSubmit(){
     let search = this.searchForm.value.search
     
-    fetch('https://www.metaweather.com/api/location/search/?query='+search)
-    .then(json =>json.json())
-    .then(response => {
-      this.gpsDetected = 'inActive'
-      this.location = response
-    })
+    if(search == "")
+      this.location = []
+    else
+      fetch('https://www.metaweather.com/api/location/search/?query='+search)
+        .then(json =>json.json())
+        .then(response => {
+          this.gpsDetected = 'inActive'
+          this.location = response
+        })
   }
 
   sendLocation(woeid:number){    

@@ -9,7 +9,7 @@
 <div id="menu">
   <label for="checkboxMenu" id="exitMenu"><img class="icon_white" src="assets/close_black_24dp.svg" alt="exit"></label>
   <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
-    <input type="text" formControlName="search" name="search" placeholder="Search location">
+    <input type="text" formControlName="search" name="search" placeholder="Search location" (keyup)="onSubmit()">
     <input type="submit" value="Search">
     <img class="icon_gray" src="assets/search_black_24dp.svg" alt="Search">
   </form>
@@ -17,4 +17,5 @@
     <p>{{item.title}}</p>
     <img class="icon_gray" src="assets/chevron_right_black_24dp.svg" alt="Search">
   </label>
+  <div id="no-data" *ngIf="location.length == 0">No data</div>
 </div>
