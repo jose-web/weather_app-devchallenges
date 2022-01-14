@@ -1,11 +1,14 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import * as offlineJSON from "../../offline.json" ;
+  
 
 @Component({
   selector: 'Menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.sass']
 })
+
 
 export class Menu {
 
@@ -19,6 +22,7 @@ export class Menu {
   location:any = []
   gpsDetected = 'inActive'
 
+
   constructor(private formBuilder: FormBuilder) {
     this.sendLocation(766273) // Madrid by default
   }
@@ -29,7 +33,7 @@ export class Menu {
     if(search == "")
       this.location = []
     else
-      fetch('https://www.metaweather.com/api/location/search/?query='+search)
+      fetch('https://weather-app-300202.herokuapp.com/https://www.metaweather.com/api/location/search/?query='+search)
         .then(json =>json.json())
         .then(response => {
           this.gpsDetected = 'inActive'
@@ -38,17 +42,20 @@ export class Menu {
   }
 
   sendLocation(woeid:number){    
-    fetch('https://www.metaweather.com/api/location/'+woeid)
+    fetch('https://weather-app-300202.herokuapp.com/https://www.metaweather.com/api/location/'+woeid)
     .then(json =>json.json())
     .then(response => {
       this.locationMenu.emit(response)})
+    .catch( error =>{
+      this.locationMenu.emit(offlineJSON)
+    })
   }
 
   detectLocation(){
   
     let accept = (ubicacion:any) => {
 
-      fetch('https://www.metaweather.com/api/location/search/?lattlong='+ubicacion.coords.latitude+","+ubicacion.coords.longitude)
+      fetch('https://weather-app-300202.herokuapp.com/https://www.metaweather.com/api/location/search/?lattlong='+ubicacion.coords.latitude+","+ubicacion.coords.longitude)
         .then(json =>json.json())
         .then(response => {
           this.gpsDetected = 'active'

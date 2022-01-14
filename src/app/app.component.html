@@ -3,7 +3,8 @@
     <Menu (locationMenu)="setLocation($event)"></Menu>
     <div id="weatherToday">
       <img id="background" src="assets/Cloud-background.png" alt="background">
-      <img id="imageToday" *ngIf="week[0] != undefined" [src]="getImage(week[0]?.weather_state_name)" alt="Image weather today">
+      <img id="imageToday" *ngIf="week[0] != undefined" [src]="getImage(week[0]?.weather_state_name)"
+        alt="Image weather today">
     </div>
     <div>
       <p id="temperature">{{week[0]?.the_temp.toFixed(2)}}<span>º{{type}}</span></p>
@@ -15,52 +16,56 @@
     </div>
   </div>
   <div id="secondary">
-    <div id="temperatureFormat">
-      <input type="radio" name="temperature" checked value="C" id="C" (change)="changeType('C')">
-      <label for="C">ºC</label>
-      <input type="radio" name="temperature" value="F" id="F" (change)="changeType('F')">
-      <label for="F">ºF</label>
-    </div>
-    <div id="week">
-      <div *ngFor="let item of week.slice(1); let i = index">
-        <p>{{i==0?"Tomorrow":item.applicable_date}}</p>
-
-        <img [src]="getImage(item.weather_state_name)" [alt]="item.weather_state_name">
-        <p class="temperature">{{item.max_temp.toFixed(0)}}º{{type}} <span>{{item.min_temp.toFixed(0)}}º{{type}}</span></p>
+    <div id="content">
+      <div id="temperatureFormat">
+        <input type="radio" name="temperature" checked value="C" id="C" (change)="changeType('C')">
+        <label for="C">ºC</label>
+        <input type="radio" name="temperature" value="F" id="F" (change)="changeType('F')">
+        <label for="F">ºF</label>
       </div>
-    </div>
-    <p id="hightlightsTitle">Today's Hightlights</p>
-    <div id="hightlights">
-      <div>
-        <p>Wind status</p>
-        <p class="big">{{week[0]?.wind_speed.toFixed(2)}} mph</p>
-        <div>
-          <img class="icon_white" src="assets/near_me_black_24dp.svg" alt="Navigation">
-          <p>{{week[0]?.wind_direction_compass}}</p>
+      <div id="week">
+        <div *ngFor="let item of week.slice(1); let i = index">
+          <p>{{i==0?"Tomorrow":item.applicable_date}}</p>
+
+          <img [src]="getImage(item.weather_state_name)" [alt]="item.weather_state_name">
+          <p class="temperature">{{item.max_temp.toFixed(0)}}º{{type}}
+            <span>{{item.min_temp.toFixed(0)}}º{{type}}</span></p>
         </div>
       </div>
-      <div>
-        <p>Humidity</p>
-        <p class="big">{{week[0]?.humidity}}%</p>
+      <p id="hightlightsTitle">Today's Hightlights</p>
+      <div id="hightlights">
         <div>
-          <p>0</p>
-          <p id="p50">50</p>
-          <p>100</p>
-          <div id="percentage">
-            <div [style]="{width: week[0]?.humidity+'%'}"></div>
+          <p>Wind status</p>
+          <p class="big">{{week[0]?.wind_speed.toFixed(2)}} mph</p>
+          <div>
+            <img class="icon_white" src="assets/near_me_black_24dp.svg" alt="Navigation">
+            <p>{{week[0]?.wind_direction_compass}}</p>
           </div>
         </div>
+        <div>
+          <p>Humidity</p>
+          <p class="big">{{week[0]?.humidity}}%</p>
+          <div>
+            <p>0</p>
+            <p id="p50">50</p>
+            <p>100</p>
+            <div id="percentage">
+              <div [style]="{width: week[0]?.humidity+'%'}"></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p>Visibility</p>
+          <p class="big">{{week[0]?.visibility.toFixed(2)}} miles</p>
+        </div>
+        <div>
+          <p>Air Pressure</p>
+          <p class="big">{{week[0]?.air_pressure.toFixed(2)}} mb</p>
+        </div>
       </div>
-      <div>
-        <p>Visibility</p>
-        <p class="big">{{week[0]?.visibility.toFixed(2)}} miles</p>
-      </div>
-      <div>
-        <p>Air Pressure</p>
-        <p class="big">{{week[0]?.air_pressure.toFixed(2)}} mb</p>
-      </div>
+      <p id="footer">Created by <a href="https://github.com/jose-web" target="_blank"
+          rel="noopener noreferrer">jose-web</a> - devChallenges.io</p>
     </div>
-    <p id="footer">Created by <a href="https://github.com/jose-web" target="_blank" rel="noopener noreferrer">jose-web</a> - devChallenges.io</p>
   </div>
 </div>
 
